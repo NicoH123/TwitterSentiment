@@ -5,9 +5,9 @@ Installation (work in progress):
 
 1. Install SemanticMediaWiki.
 
-2. cd to [yourmediawiki]/extensions.
+2. cd to [yoursemanticmediawiki]/extensions.
 
-3. Fire "git clone [Repo-URL]".
+3. Fire "git clone [Repo-URL]" (TODO name of our extension).
 
 4. Perform the following configurations in [ourextension]/resources/140dev: ...
 
