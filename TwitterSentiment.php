@@ -9,15 +9,24 @@
  * @author Your Name, 2015
  */
 
-$wgExtensionCredits['other'][] = array(
+ # Alert the user that this is not a valid access point to MediaWiki if they try to access the special pages file directly.
+if ( !defined( 'MEDIAWIKI' ) ) {
+	echo <<<EOT
+To install my extension, put the following line in LocalSettings.php:
+require_once( "\$IP/extensions/[MyExtension]/[MyExtension].php" );
+EOT;
+	exit( 1 );
+}
+ 
+$wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
-	'name' => 'BoilerPlate',
+	'name' => 'HelloTweet',
 	'author' => array(
 		'Your Name',
 	),
 	'version'  => '0.0.0',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:BoilerPlate',
-	'descriptionmsg' => 'boilerplate-desc',
+	'descriptionmsg' => 'Hello, Tweet!',
 	'license-name' => 'MIT',
 );
 
@@ -25,15 +34,17 @@ $wgExtensionCredits['other'][] = array(
 
 // Register files
 $wgAutoloadClasses['BoilerPlateHooks'] = __DIR__ . '/BoilerPlate.hooks.php';
-$wgAutoloadClasses['SpecialHelloWorld'] = __DIR__ . '/specials/SpecialHelloWorld.php';
-$wgMessagesDirs['BoilerPlate'] = __DIR__ . '/i18n';
+$wgAutoloadClasses['SpecialHelloTweet'] = __DIR__ . '/specials/SpecialHelloTweet.php';
+$wgAutoloadClasses['SpecialTweet1'] = __DIR__ . '/specials/SpecialTweet1.php';
+$wgMessagesDirs['TwitterSentiment'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['BoilerPlateAlias'] = __DIR__ . '/BoilerPlate.i18n.alias.php';
 
 // Register hooks
 #$wgHooks['NameOfHook'][] = 'BoilerPlateHooks::onNameOfHook';
 
 // Register special pages
-$wgSpecialPages['HelloWorld'] = 'SpecialHelloWorld';
+$wgSpecialPages['HelloTweet'] = 'SpecialHelloTweet';
+$wgSpecialPages['Tweet1'] = 'SpecialTweet1';
 
 // Register modules
 $wgResourceModules['ext.boilerPlate.foo'] = array(
