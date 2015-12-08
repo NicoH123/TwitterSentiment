@@ -33,6 +33,7 @@ $wgExtensionCredits['specialpage'][] = array(
 /* Setup */
 
 // Register files
+$wgAutoloadClasses['SpecialTweet4'] = __DIR__ . '/specials/SpecialTweet4.php';
 $wgAutoloadClasses['BoilerPlateHooks'] = __DIR__ . '/BoilerPlate.hooks.php';
 $wgAutoloadClasses['SpecialHelloTweet'] = __DIR__ . '/specials/SpecialHelloTweet.php';
 $wgAutoloadClasses['SpecialTweet1'] = __DIR__ . '/specials/SpecialTweet1.php';
@@ -43,6 +44,7 @@ $wgExtensionMessagesFiles['BoilerPlateAlias'] = __DIR__ . '/BoilerPlate.i18n.ali
 #$wgHooks['NameOfHook'][] = 'BoilerPlateHooks::onNameOfHook';
 
 // Register special pages
+$wgSpecialPages['Tweet4'] = 'SpecialTweet4';
 $wgSpecialPages['HelloTweet'] = 'SpecialHelloTweet';
 $wgSpecialPages['Tweet1'] = 'SpecialTweet1';
 

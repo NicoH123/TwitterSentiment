@@ -7,7 +7,6 @@
  * 
  */
 
-
 class TestIterator {
 	# Create a new Tweet page by the name of 'SpecialTweet${tid}.php'
 	# in the directory /specials of the extension.
@@ -28,7 +27,7 @@ class TestIterator {
  * @ingroup Extensions
  */
  
-class SpecialTweetXXX extends SpecialPage {
+	class SpecialTweetXXX extends SpecialPage {
 	
 	/**
 	* Constructor
@@ -50,7 +49,7 @@ class SpecialTweetXXX extends SpecialPage {
 		$out->setPageTitle( \'TweetXXX\' );
 
 		$out->addWikiMsg( \'boilerplate-helloworld-intro\' );
-		$out->addWikiText(\'This is a [[Category:Tweet]] Tweet. It was written by [[Was written by::User1]] User1.\');
+		$out->addWikiText(\'This is a [[Category::Tweet]] Tweet. It was written by [[Was written by::User1]] User1.\');
 		
 		$out->addWikiText(\'{|
 							! align=\\\'left\\\'| Gegenstand
@@ -121,6 +120,6 @@ class SpecialTweetXXX extends SpecialPage {
 
 # This is just to test the above functionality. TODO remove from here.
 $iterator = new TestIterator();
-$iterator->create_tweet_page(2);
+#$iterator->create_tweet_page(30);
 
 ?>
