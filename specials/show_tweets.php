@@ -27,6 +27,7 @@ if (isset($_GET['last'])) {
 }
 */
 
+$cSession2 = curl_init();	
 $query .= 'ORDER BY tweet_id DESC LIMIT ' . 5; //hier eine Verändung von mir
 $result = $oDB->select($query);
 
@@ -38,8 +39,7 @@ $tweets_found = 0;
 while (($row = mysqli_fetch_assoc($result))
   &&($tweets_found < 30)) { 
   
-  ++$tweets_found; 
-	
+  ++$tweets_found;
   // create a fresh copy of the empty template
   $current_tweet = $tweet_template;
 	
@@ -58,15 +58,34 @@ while (($row = mysqli_fetch_assoc($result))
   $current_tweet = str_replace( '[tweet_display_title]', 
     TWEET_DISPLAY_TITLE, $current_tweet);  
   $current_tweet = str_replace( '[tweet_text]', 
-    linkify($row['tweet_text']), $current_tweet);  
+    linkify($row['tweet_text']), $current_tweet); 
+
+	curl_setopt_array($cSession2, array(
+		CURLOPT_RETURNTRANSFER => 1,
+		CURLOPT_URL => 'http://localhost/TwitterWiki/api.php?',
+		CURLOPT_POST => 1,
+		CURLOPT_POSTFIELDS => array(
+        'action' => 'edit',
+        'title' => 'Testseite' . $row['tweet_id'],
+		'section' => 'new',
+		'text' => 'Hello%20World' . $row['tweet_text'],
+		'token' => "+\\",
+			)
+		));
+		
+	//step3
+		$curl_result=curl_exec($cSession2);	
 		
   // Include each tweet's id so site.js can request older or newer tweets
   $current_tweet = str_replace( '[tweet_id]', 
     $row['tweet_id'], $current_tweet); 
   // Add this tweet to the list
   $tweet_list .= $current_tweet;
-}
-
+  }
+  
+  //step4
+		curl_close($cSession2);
+		
 if (!$tweets_found) {
   if (isset($_GET['last'])) {
     $tweet_list = '<strong>No more tweets found</strong><br />';
