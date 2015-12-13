@@ -1,0 +1,5 @@
+Für jeden Tweet:
+- Lege eine Seite ("Tweet123") an und schreibe die Tabelle mit semantischen Annotationen, s. Template.
+- Wenn der Autor noch nicht als User-Seite existiert, lege ihn auch an ("User123") und schreibe die Tabelle, s. Template.
+- Für jeden Hashtag im Tweet:
+	- Wenn Hashtag noch nicht existiert, lege ihn an mit dem Namen "Hastag xyz" und füge ihn der Category:Hashtag hinzu, s. Template.

@@ -1,0 +1,14 @@
+{| class="wikitable"
+|+Information about Tweet123
+!User
+!Text
+!Hashtags
+!Created at
+|-
+|[[Was written by::User123]]
+|[[Has text::This is an example tweet. #mediawiki #thuglife]]
+|[[Has hashtag::Hashtag mediawiki|#mediawiki]], [[Has hashtag::Hashtag thuglife|#thuglife]]
+|[[Was created at::2015-12-09 05:21:01]]
+|}
+
+[[Category:Tweet]]

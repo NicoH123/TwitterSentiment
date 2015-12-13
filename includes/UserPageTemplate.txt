@@ -1,0 +1,11 @@
+{| class="wikitable"
+|+Information about User123
+!Username
+!Location
+|-
+|[[Has name::Nico]]
+|[[Has location::Karlsruhe]]
+|}
+
+
+[[Category:User]]
