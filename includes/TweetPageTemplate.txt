@@ -1,14 +1,14 @@
 {| class="wikitable"
-|+Information about Tweet123
+|+Information about Tweet{tweet_id}
 !User
 !Text
-!Hashtags
+!Hashtag(s)
 !Created at
 |-
-|[[Was written by::User123]]
-|[[Has text::This is an example tweet. #mediawiki #thuglife]]
-|[[Has hashtag::Hashtag mediawiki|#mediawiki]], [[Has hashtag::Hashtag thuglife|#thuglife]]
-|[[Was created at::2015-12-09 05:21:01]]
+|[[Was written by::User{user_id}]]
+|[[Has text::{tweet_text}]]
+|[[Has hashtag::Hashtag {tag}|#{tag}]]
+|[[Was created at::{created_at}]]
 |}
 
 [[Category:Tweet]]
