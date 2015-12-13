@@ -7,7 +7,7 @@
 |-
 |[[Was written by::User{user_id}]]
 |[[Has text::{tweet_text}]]
-|[[Has hashtag::Hashtag {tag}|#{tag}]]
+|{tags}
 |[[Was created at::{created_at}]]
 |}
 
