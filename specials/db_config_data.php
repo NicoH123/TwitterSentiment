@@ -11,5 +11,5 @@
   $db_name = 'mediawiki'; 
 	
 	// MySQL time zone setting to normalize dates
-	define('TIME_ZONE','Europe/Berlin');
+	define('TIME_ZONE','America/New_York');
 ?> 

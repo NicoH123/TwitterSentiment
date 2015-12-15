@@ -8,7 +8,7 @@
 $cSession = curl_init();
 
 // Source database: 140dev
-require_once('../resources/140dev/db/db_lib.php' );
+require_once('../specials/db_basis.php' );
 $oDB = new db;
 
 // Query for tweets and users
@@ -77,7 +77,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	// Setup curl to create the user page if it does not exist yet
 	curl_setopt_array($cSession, array(
 		CURLOPT_RETURNTRANSFER => 1,
-		CURLOPT_URL => 'http://localhost/MediaWiki/api.php?',
+		CURLOPT_URL => 'http://localhost/TwitterWiki/api.php?',
 		CURLOPT_POST => 1,
 		CURLOPT_POSTFIELDS => array(
 							'action' => 'edit',
@@ -101,7 +101,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	// Setup curl to create the tweet page if it does not exist yet
 	curl_setopt_array($cSession, array(
 		CURLOPT_RETURNTRANSFER => 1,
-		CURLOPT_URL => 'http://localhost/MediaWiki/api.php?',
+		CURLOPT_URL => 'http://localhost/TwitterWiki/api.php?',
 		CURLOPT_POST => 1,
 		CURLOPT_POSTFIELDS => array(
 							'action' => 'edit',

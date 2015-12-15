@@ -1,10 +1,10 @@
 {| class="wikitable"
 |+Information about User{user_id}
 !Username
-!Location
+!Name
 |-
-|[[Has name::{screen_name}]]
-|[[Has location::{location}]]
+|[[Has username::{screen_name}]]
+|[[Has name::{name}]]
 |}
 
 

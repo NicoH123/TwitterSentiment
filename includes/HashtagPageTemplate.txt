@@ -1,1 +1,7 @@
+{| class="wikitable"
+|+Information about User{user_id}
+!Hashtag
+|-
+|[[Has Hashtag::{tags}]]
+|}
 [[Category:Hashtag]]

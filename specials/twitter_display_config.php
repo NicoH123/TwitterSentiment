@@ -25,7 +25,10 @@ define ('MORE_BUTTON', 'tweets displayed - View More');
 define('HASHTAG_TITLE', 'View tweets for tag: ');
 
 // Title for user mention links
-define('USER_MENTION_TITLE', 'View tweets by user: ');
+define('USER_MENTION_TITLE', 'Show User on MediaWiki: ');
+
+// Title for user mention links
+define('TWEET_MENTION_TITLE', 'Show Tweet on MediaWiki: ');
 
 // Title for tweet date
 define('TWEET_DISPLAY_TITLE', 'View this tweet on Twitter.com');
@@ -35,7 +38,7 @@ define('NEW_COUNT_REFRESH', 30);
 
 // Message for new tweet count at top of tweet list
 define('NEW_TWEET_MESSAGE', 
-  '1 new tweet available. <a href="index.php">Refresh</a> to see it.');	
+  '1 new tweet available. <a href="http://localhost/TwitterWiki/index.php/Spezial:HelloTweet">Refresh</a> to see it.');	
 define('NEW_TWEETS_MESSAGE', 
-  ' new tweets available. <a href="index.php">Refresh</a> to see them.');		
+  ' new tweets available. <a href="http://localhost/TwitterWiki/index.php/Spezial:HelloTweet">Refresh</a> to see them.');		
 ?>
