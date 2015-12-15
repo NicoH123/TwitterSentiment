@@ -1,3 +1,4 @@
+
 <?php
 /**
  * HelloWorld SpecialPage for BoilerPlate extension
@@ -5,7 +6,9 @@
  * @file
  * @ingroup Extensions
  */
-include("TestIterator.php");
+
+ // Get constants for tweet display
+require_once("twitter_display_config.php");
 class SpecialHelloTweet extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'HelloTweet' );
@@ -18,11 +21,13 @@ class SpecialHelloTweet extends SpecialPage {
 	 *  [[Special:HelloWorld/subpage]].
 	 */
 	public function execute( $sub ) {
-		
+		#mw.loader.load( 'site.js' );
 		$tweet_page = file_get_contents('C:\wamp\www\TwitterWiki\extensions\TwitterSentiment\specials\tweet_list_template.txt');
 		$tweet_page = str_replace( '[tweets]', 
 		require_once('show_tweets.php'), $tweet_page); // Veränderung
 		
+		
+		/*
 		//Problem: Eigentlich sollte ich einen Token zum Edit erhalten;
 		//ich erhalte aber nur den "anonymen User" Token.
 		// am besten fixen - im Notfall weglassen, geht auch ohne.
@@ -38,13 +43,13 @@ class SpecialHelloTweet extends SpecialPage {
 		//step4
 		curl_close($cSession1);
 		print $result;
-		
+		*/
 		
 		/*
 		In dieser Curl Initialisierung senden wir unsere Post-Anfrage mit allen nötigen Informationen.
 		Eigentlich macht es hier wenig Sinn, wollte es nur mal drin lassen, damit man die andere OptArray sieht.
 		Darf danach also gelöscht werden.
-		*/
+		
 		
 		$cSession2 = curl_init();	
 		  //step2 - hier als Kontrast mit Array gelöst
@@ -71,6 +76,7 @@ class SpecialHelloTweet extends SpecialPage {
 
 		//step4
 		curl_close($cSession2);
+		*/
 		
 		// Optional
 		$tweet_page = str_replace( '[new_count_refresh]', 
@@ -82,10 +88,11 @@ class SpecialHelloTweet extends SpecialPage {
 		//Optional Ende
 		
 		$out = $this->getOutput();
+		$out->addModules( 'ext.boilerPlate.foo' );
 		$out->setPageTitle( "Twitter Sentiment Analysis" );
-		$out->addWikiMsg( 'boilerplate-helloworld-intro' );
-		$out->addWikiText("This is some ''lovely'' [[wikitext]] that will '''get''' parsed nicely.");
-		$out->addHTML($this->sandboxParse("Here's some '''formatted''' text."));
+		#$out->addWikiMsg( 'boilerplate-helloworld-intro' );
+		#$out->addWikiText("This is some ''lovely'' [[wikitext]] that will '''get''' parsed nicely.");
+		#$out->addHTML($this->sandboxParse("Here's some '''formatted''' text."));
 		$out->addHTML($tweet_page); // Veränderung
 	}
 
@@ -102,3 +109,4 @@ class SpecialHelloTweet extends SpecialPage {
 		return 'nicotest';
 	}
 }
+?>

@@ -12,20 +12,19 @@
 require_once('twitter_display_config.php');
 require_once('display_lib.php');
 require_once('db_basis.php' ); // hier eine Veränderung
-require_once('TestIterator.php'); //hier eine Veränderung
 $oDB = new db;
 
 $query = 'SELECT profile_image_url, created_at, screen_name, 
   name, tweet_text, tweet_id
   FROM tweets ';
   
-/** Dieser Teil kann weggelassen werden, solange statisch.
+
 // Query string of last=[tweet_id] means that this script was called by site.js
 // when the More Tweets button was clicked
 if (isset($_GET['last'])) {  
   $query .= 'WHERE tweet_id < "' . $_GET['last'] . '" ';
 }
-*/
+
 
 $cSession2 = curl_init();	
 $query .= 'ORDER BY tweet_id DESC LIMIT ' . 5; //hier eine Verändung von mir
@@ -37,7 +36,7 @@ $tweet_list = '';
 $tweets_found = 0;	
 
 while (($row = mysqli_fetch_assoc($result))
-  &&($tweets_found < 30)) { 
+  &&($tweets_found < 5)) { 
   
   ++$tweets_found;
   // create a fresh copy of the empty template

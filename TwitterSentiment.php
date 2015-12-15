@@ -50,12 +50,11 @@ $wgSpecialPages['Tweet1'] = 'SpecialTweet1';
 
 // Register modules
 $wgResourceModules['ext.boilerPlate.foo'] = array(
-	'scripts' => array(
-		'modules/ext.boilerPlate.js',
-		'modules/ext.boilerPlate.foo.js',
-	),
+	'scripts' => 
+		'specials/site.js',
+	
 	'styles' => array(
-		'modules/ext.boilerPlate.foo.css',
+		'specials/default.css',
 	),
 	'messages' => array(
 	),
