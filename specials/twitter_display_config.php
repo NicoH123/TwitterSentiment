@@ -22,7 +22,7 @@ define('TWEET_DISPLAY_COUNT', 5);
 define ('MORE_BUTTON', 'tweets displayed - View More');
 
 // Title for hashtag links
-define('HASHTAG_TITLE', 'View tweets for tag: ');
+define('HASHTAG_TITLE', 'View Hashtag on MediaWiki: ');
 
 // Title for user mention links
 define('USER_MENTION_TITLE', 'Show User on MediaWiki: ');
@@ -34,7 +34,7 @@ define('TWEET_MENTION_TITLE', 'Show Tweet on MediaWiki: ');
 define('TWEET_DISPLAY_TITLE', 'View this tweet on Twitter.com');
 
 // Number of seconds between checking server for new tweet count
-define('NEW_COUNT_REFRESH', 30);
+define('NEW_COUNT_REFRESH', 10);
 
 // Message for new tweet count at top of tweet list
 define('NEW_TWEET_MESSAGE', 

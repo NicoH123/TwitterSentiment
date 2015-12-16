@@ -19,11 +19,13 @@ jQuery(document).ready(function($){
   // Keep checking the new tweet count based on the refresh value
   var new_count_refresh = $("#new_count_refresh").html() * 1000;
   setInterval(get_new_tweet_count, new_count_refresh);
+
   
   // Reload the page when the count is clicked
   $("#new_tweet_count").click(function(){
     window.location.reload();
   });
+  
   
   // Set up the more tweets button at the bottom of the list
   // Get the current number of tweets displayed

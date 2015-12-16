@@ -49,6 +49,7 @@ while (($row = mysqli_fetch_assoc($result))
   $current_tweet = $tweet_template;
   $current_tweetpage = $tweet_template1;
   $current_userpage = $user_template;
+  $current_hashpage = $hashtag_template;
   
   
   // Fill in the template with the current tweet
@@ -66,9 +67,10 @@ while (($row = mysqli_fetch_assoc($result))
     USER_MENTION_TITLE . ' ' . $row['screen_name'] . ' (' . $row['name'] . ')', 
     $current_tweet);  
   $current_tweet = str_replace( '[tweet_display_title]', 
-    TWEET_DISPLAY_TITLE, $current_tweet);  
-  $current_tweet = str_replace( '[tweet_text]', 
-    linkify($row['tweet_text']), $current_tweet); 
+    TWEET_DISPLAY_TITLE, $current_tweet);
+	
+  $current_tweet = str_replace('[tweet_text]', 
+    linkify($row['tweet_text'],$row['tweet_id']), $current_tweet); 
 		
   // Include each tweet's id so site.js can request older or newer tweets
   $current_tweet = str_replace( '[tweet_id]', 
@@ -82,6 +84,45 @@ while (($row = mysqli_fetch_assoc($result))
 	$current_userpage = str_replace('{user_id}', $row['user_id'], $current_userpage);
 	$current_userpage = str_replace('{screen_name}', $row['screen_name'], $current_userpage);
 	$current_userpage = str_replace('{name}', $row['name'], $current_userpage);
+	
+	// Look for hashtags to this tweet. If there are 1 or more, add to tweet.
+	$hashtags = '';
+	$tagQuery = 'SELECT DISTINCT	tag as tag
+				FROM				tweet_tags
+				WHERE				tweet_id = ' . $row['tweet_id'];
+	#echo('Hashtag query: ' . $tagQuery . '</br>');
+	$tagResult = $oDB->select($tagQuery);
+	$numHashtags = mysqli_num_rows($tagResult);
+	if($numHashtags > 0) {
+		#echo(' This tweet contains ' . $numHashtags . ' hashtags.');
+		while($hRow = mysqli_fetch_assoc($tagResult)) {
+			$hashtags = $hashtags . '[[Has hashtag::Hashtag ' . 
+		$hRow['tag'] . '|#' . $hRow['tag']; 
+						
+		$hashtags = substr($hashtags, 0, strlen($hashtags));
+		$current_hashpage = str_replace('{user_id}', $row['user_id'], $current_hashpage);
+		$current_hashpage = str_replace('{tweet_id}', $row['tweet_id'], $current_hashpage);
+		$current_hashpage = str_replace('{tag}', $hashtags, $current_hashpage);
+	}
+	}
+	$current_tweetpage = str_replace('{tags}', $hashtags, $current_tweetpage);
+	
+	curl_setopt_array($cSession, array(
+		CURLOPT_RETURNTRANSFER => 1,
+		CURLOPT_URL => 'http://localhost/TwitterWiki/api.php?',
+		CURLOPT_POST => 1,
+		CURLOPT_POSTFIELDS => array(
+							'action' => 'edit',
+							'title' => 'Hashtag' . $row['tweet_id'],
+							'createonly' => 'true',
+							'text' => $current_hashpage,
+							'summary' => 'Created automatically from the 140dev database.',
+							'token' => "+\\",
+			)
+		)
+	);
+	// Execute curl
+	$curl_result = curl_exec($cSession);
 	
 	
 	curl_setopt_array($cSession, array(
@@ -121,6 +162,25 @@ while (($row = mysqli_fetch_assoc($result))
   }
   
   curl_close($cSession);
+  
+ function linkify($text,$tweetstring) {
+
+	// Linkify URLs
+  $text = preg_replace("/[[:alpha:]]+:\/\/[^<>[:space:]]+[[:alnum:]\/]/i",
+  	"<a href=\"\\0\" target=\"_blank\">\\0</a>", $text); 
+	
+	// Linkify @mentions
+  $text = preg_replace("/\B@(\w+(?!\/))\b/i", 
+  	'<a href="https://twitter.com/\\1" title="' .
+  	USER_MENTION_TITLE . '\\1">@\\1</a>', $text); 
+    	
+	// Linkify #hashtags
+  $text = preg_replace("/\B(?<![=\/])#([\w]+[a-z]+([0-9]+)?)/i", 
+  	'<a href="http://localhost/TwitterWiki/index.php/Hashtag'.$tweetstring.'" title="' .
+  	HASHTAG_TITLE . '\\1">#\\1</a>', $text); 
+    	
+  return $text;
+}
   
   /*$result = $oDB->select($tidQuery);
   
@@ -250,28 +310,4 @@ if (isset($_GET['last'])) {
   // Called by twitter_display.php with require(), so return the value
   return $tweet_list;
 }
-/*
-// Query for tweets and users - the following part is only for creating the new pages
-// TODO remove limit
-$tweetQuery = 'SELECT 		tw.tweet_id as tid, tw.tweet_text as tx, tw.created_at as cr, 
-							tw.user_id as uid, tt.tag as tag, u.screen_name as sn, u.location as loc
-				FROM 		tweets tw, tweet_tags tt, users u
-				WHERE 		tw.tweet_id = tt.tweet_id
-				AND 		tw.user_id = u.user_id
-				ORDER BY 	tw.tweet_id
-				LIMIT 		50';
-$tweetQuery = 'SELECT 		tweet_id as tid, tweet_text as tx, created_at as cr, 
-							user_id as uid, tag as tag, screen_name as sn, location as loc
-				FROM 		tweets tw, tweet_tags tt, users u
-				WHERE 		tw.tweet_id = tt.tweet_id
-				AND 		tw.user_id = u.user_id
-				ORDER BY 	tw.tweet_id
-				LIMIT 		50';
-$tidQuery = 'SELECT DISTINCT 	tweet_id as tid, tweet_text as tx, 
-								created_at as cr, user_id as uid 
-			FROM 				tweets 
-			LIMIT 				20'; */
-
 ?>
-
- 

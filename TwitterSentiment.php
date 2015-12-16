@@ -52,6 +52,7 @@ $wgSpecialPages['Tweet1'] = 'SpecialTweet1';
 $wgResourceModules['ext.boilerPlate.foo'] = array(
 	'scripts' => 
 		'specials/site.js',
+		'http://code.jquery.com/jquery-latest.min.js',
 	
 	'styles' => array(
 		'specials/default.css',
