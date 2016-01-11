@@ -1,0 +1,11 @@
+{| class="wikitable"
+|+Information about User{user_id}
+!Username
+!Name
+|-
+|[[Has username::{screen_name}]]
+|[[Has name::{name}]]
+|}
+
+
+[[Category:User]]

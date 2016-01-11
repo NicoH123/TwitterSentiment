@@ -1,0 +1,14 @@
+{| class="wikitable"
+|+Information about Tweet{tweet_id}
+!User
+!Text
+!Hashtag(s)
+!Created at
+|-
+|[[Was written by::User{user_id}]]
+|[[Has text::{tweet_text}]]
+|[[Has Hashtag::{tags}]]
+|[[Was created at::{created_at}]]
+|}
+
+[[Category:Tweet]]
