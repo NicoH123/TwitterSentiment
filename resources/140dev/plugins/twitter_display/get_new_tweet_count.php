@@ -8,9 +8,9 @@
 * @version BETA 0.30
 */
 
-require_once('twitter_display_config.php' );
-require_once('../../db/140dev_config.php');
-require_once('../../db/db_lib.php'); 
+require_once __DIR__ . '/twitter_display_config.php' ;
+require_once __DIR__ . '/../../db/140dev_config.php';
+require_once __DIR__ . '/../../db/db_lib.php'; 
 $oDB = new db;
 
 // This is called by site.js with an argument of first containing a tweet_id:

@@ -9,14 +9,14 @@
 */
 
 // Get constants for tweet display
-require_once("twitter_display_config.php");
+require_once('twitter_display_config.php');
 
 // Get the HTML structure 
-$tweet_page = file_get_contents('tweet_list_template.txt');
+$tweet_page = file_get_contents(__DIR__ . '/tweet_list_template.txt');
 
 // Fill in the most recent individual tweets
 $tweet_page = str_replace( '[tweets]', 
-  require_once('get_tweet_list.php'), $tweet_page); 
+  require_once(__DIR__ . '/get_tweet_list.php'), $tweet_page); 
 		
 // Fill in the constants and strings needed by site.js after the page loads
 $tweet_page = str_replace( '[new_count_refresh]', 

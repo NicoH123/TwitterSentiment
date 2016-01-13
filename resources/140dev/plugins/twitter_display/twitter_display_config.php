@@ -12,7 +12,8 @@
 // You MUST fill this in with the correct URL for the 140dev code
 // For example, if the code is at http://mydomain.com/twitter_display/
 // change to define('AJAX_URL', 'http://mydomain.com/twitter_display/');
-define('AJAX_URL', 'http://localhost/mediawiki-1.25.3/extensions/TwitterAnalysis/resources/140dev/plugins/twitter_display/');
+$ajax_url = 'http://' . $_SERVER['SERVER_NAME'] . '/extensions/TwitterSentiment/resources/140dev/plugins/twitter_display/';
+define('AJAX_URL', $ajax_url);
 
 // Number of tweets displayed when the tweet list is first displayed
 // and when the View More button is clicked

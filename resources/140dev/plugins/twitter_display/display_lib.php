@@ -1,18 +1,20 @@
 <?php 
 /**
-* display_lib.php
+* display_lib.php (modified Daniel Wenz & Nico Haubner)
 * Convert entities into links within a tweet's text
 * Latest copy of this code: http://140dev.com/free-twitter-api-source-code-library/
 * @author Adam Green <140dev@gmail.com>
 * @license GNU Public License
 * @version BETA 0.30
 */
-function linkify($text) {
+function linkify($text,$tweetstring) {
 
+ $wikiURL = 'http://' . $_SERVER['SERVER_NAME'];
+ 
 	// Linkify URLs
   $text = preg_replace("/[[:alpha:]]+:\/\/[^<>[:space:]]+[[:alnum:]\/]/i",
   	"<a href=\"\\0\" target=\"_blank\">\\0</a>", $text); 
-		    	
+	
 	// Linkify @mentions
   $text = preg_replace("/\B@(\w+(?!\/))\b/i", 
   	'<a href="https://twitter.com/\\1" title="' .
@@ -20,7 +22,7 @@ function linkify($text) {
     	
 	// Linkify #hashtags
   $text = preg_replace("/\B(?<![=\/])#([\w]+[a-z]+([0-9]+)?)/i", 
-  	'<a href="https://twitter.com/search?q=%23\\1" title="' .
+  	'<a href=' . $wikiURL . '/index.php/Hashtag_'.$tweetstring.' title="' .
   	HASHTAG_TITLE . '\\1">#\\1</a>', $text); 
     	
   return $text;

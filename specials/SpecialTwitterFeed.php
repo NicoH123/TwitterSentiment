@@ -6,9 +6,9 @@
  * @ingroup Extensions
  */
 
-class SpecialHelloTweet extends SpecialPage {
+class SpecialTwitterFeed extends SpecialPage {
 	public function __construct() {
-		parent::__construct( 'HelloTweet' );
+		parent::__construct( 'TwitterFeed' );
 	}
 
 	/**
@@ -20,11 +20,13 @@ class SpecialHelloTweet extends SpecialPage {
 	public function execute( $sub ) {
 		
 		 // Get constants for tweet display
-		require_once("twitter_display_config.php");
+		require_once __DIR__ . '/../resources/140dev/plugins/twitter_display/twitter_display_config.php';
 
-		$tweet_page = file_get_contents('C:\wamp\www\TwitterWiki\extensions\TwitterSentiment\specials\tweet_list_template.txt');
+		$tweet_page = file_get_contents(__DIR__ . '/../resources/140dev/plugins/twitter_display/tweet_list_template.txt');
+		// Here, tweets are shown and Wiki pages are created.
 		$tweet_page = str_replace( '[tweets]', 
-		require_once('show_tweets.php'), $tweet_page); // Veränderung
+		require_once __DIR__ . '/../resources/140dev/plugins/twitter_display/get_tweet_list.php', 
+		$tweet_page); 
 		
 		
 		// Optional
@@ -39,16 +41,7 @@ class SpecialHelloTweet extends SpecialPage {
 		$out = $this->getOutput();
 		$out->addModules( 'ext.boilerPlate.foo' );
 		$out->setPageTitle( "Twitter Sentiment Analysis" );
-		$out->addHTML($tweet_page); // Veränderung
-	}
-
-	# Workaround to include SpecialPage in other pages.
-	function sandboxParse($wikiText) {
-		global $wgTitle, $wgUser;
-		$myParser = new Parser();
-		$myParserOptions = ParserOptions::newFromUser($wgUser);
-		$result = $myParser->parse($wikiText, $wgTitle, $myParserOptions);
-		return $result->getText();
+		$out->addHTML($tweet_page); // Veränderung von Dani
 	}
 	
 	protected function getGroupName() {
