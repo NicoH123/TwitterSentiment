@@ -1,7 +1,7 @@
 <?php 
 /**
 * get_tweet_list.php (modified Daniel Wenz & Nico Haubner)
-* Return a list of the most recent tweets as HTML
+* Return a list of the most recent tweets as HTML and create wiki pages for them
 * Older tweets are requested with the query of last=[tweet_id] by site.js
 * 
 * @author Adam Green <140dev@gmail.com>
@@ -20,7 +20,6 @@ $query = 'SELECT profile_image_url, created_at, screen_name, user_id,screen_name
   name, tweet_text, tweet_id
   FROM tweets ';
 
-
 // Use the templates for wiki pages
 $tweet_page_template = file_get_contents(__DIR__ . '/../../../../includes/TweetPageTemplate.txt');
 $user_page_template = file_get_contents(__DIR__ . '/../../../../includes/UserPageTemplate.txt');
@@ -38,7 +37,7 @@ if (isset($_GET['last'])) {
 }
 
 
-$query .= 'ORDER BY tweet_id DESC LIMIT ' . 3; //hier eine Verändung von Dani
+$query .= 'ORDER BY tweet_id DESC LIMIT ' . 3; //hier eine Verändung von Dani (und Nico)
 $result = $oDB->select($query);
 
 while (($row = mysqli_fetch_assoc($result))
@@ -111,7 +110,9 @@ while (($row = mysqli_fetch_assoc($result))
 					)
 				)
 			);
+			#echo "Doing something! </br>";
 			$curl_result = curl_exec($cSession);
+			#echo $curl_result;
 			curl_close($cSession);
 			$hashtags = $hashtags . '[[Has hashtag::Hashtag ' . $hRow['tag'] . '|#' . $hRow['tag'] . ']], '; 
 		}

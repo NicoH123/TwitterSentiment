@@ -7,7 +7,7 @@
 * @license GNU Public License
 * @version BETA 0.30
 */
-function linkify($text,$tweetstring) {
+function linkify($text,$tweet_id) {
 
  $wikiURL = 'http://' . $_SERVER['SERVER_NAME'];
  
@@ -15,14 +15,14 @@ function linkify($text,$tweetstring) {
   $text = preg_replace("/[[:alpha:]]+:\/\/[^<>[:space:]]+[[:alnum:]\/]/i",
   	"<a href=\"\\0\" target=\"_blank\">\\0</a>", $text); 
 	
-	// Linkify @mentions
-  $text = preg_replace("/\B@(\w+(?!\/))\b/i", 
+	// Linkify @mentions (commented out by Nico)
+  /*$text = preg_replace("/\B@(\w+(?!\/))\b/i", 
   	'<a href="https://twitter.com/\\1" title="' .
-  	USER_MENTION_TITLE . '\\1">@\\1</a>', $text); 
+  	USER_MENTION_TITLE . '\\1">@\\1</a>', $text); */
     	
-	// Linkify #hashtags
+	// Linkify #hashtags (modified Nico)
   $text = preg_replace("/\B(?<![=\/])#([\w]+[a-z]+([0-9]+)?)/i", 
-  	'<a href=' . $wikiURL . '/index.php/Hashtag_'.$tweetstring.' title="' .
+  	'<a href=' . $wikiURL . '/index.php/Hashtag_\\1 title="' .
   	HASHTAG_TITLE . '\\1">#\\1</a>', $text); 
     	
   return $text;

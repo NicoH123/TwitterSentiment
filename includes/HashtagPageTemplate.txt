@@ -1,1 +1,2 @@
-This is a [[Category:Hashtag]].
+This hashtag is used in (TODO: number) tweets in this wiki.
+[[Category:Hashtag]]

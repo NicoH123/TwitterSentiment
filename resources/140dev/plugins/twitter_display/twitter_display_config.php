@@ -22,14 +22,14 @@ define('TWEET_DISPLAY_COUNT', 30);
 // Text for View More button
 define ('MORE_BUTTON', 'tweets displayed - View More');
 
-// Title for hashtag links
-define('HASHTAG_TITLE', 'View tweets for tag: ');
+// Title for hashtag links (modified Nico)
+define('HASHTAG_TITLE', 'View information about tag: ');
 
 // Title for user mention links
-define('USER_MENTION_TITLE', 'View tweets by user: ');
+define('USER_MENTION_TITLE', 'View information about user: ');
 
 // Title for tweet date
-define('TWEET_DISPLAY_TITLE', 'View this tweet on Twitter.com');
+define('TWEET_DISPLAY_TITLE', 'View this tweet on the wiki');
 
 // Number of seconds between checking server for new tweet count
 define('NEW_COUNT_REFRESH', 30);
