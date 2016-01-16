@@ -36,7 +36,7 @@ define('NEW_COUNT_REFRESH', 30);
 
 // Message for new tweet count at top of tweet list
 define('NEW_TWEET_MESSAGE', 
-  '1 new tweet available. <a href="index.html">Refresh</a> to see it.');	
+  '1 new tweet available. Refresh to see it.');	
 define('NEW_TWEETS_MESSAGE', 
-  ' new tweets available. <a href="index.html">Refresh</a> to see them.');		
+  ' new tweets available. Refresh to see them.');		
 ?>

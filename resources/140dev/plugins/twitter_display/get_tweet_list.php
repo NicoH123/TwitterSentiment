@@ -76,6 +76,7 @@ while (($row = mysqli_fetch_assoc($result))
     $row['tweet_id'], $current_tweet); 
 	
 	$current_tweetpage = str_replace('{user_id}', $row['user_id'], $current_tweetpage);
+	$current_tweetpage = str_replace('{screen_name}', $row['screen_name'], $current_tweetpage);
 	$current_tweetpage = str_replace('{tweet_id}', $row['tweet_id'], $current_tweetpage);
 	$current_tweetpage = str_replace('{tweet_text}', $row['tweet_text'], $current_tweetpage);
 	$current_tweetpage = str_replace('{created_at}', $row['created_at'], $current_tweetpage);
@@ -110,7 +111,6 @@ while (($row = mysqli_fetch_assoc($result))
 					)
 				)
 			);
-			#echo "Doing something! </br>";
 			$curl_result = curl_exec($cSession);
 			#echo $curl_result;
 			curl_close($cSession);
@@ -136,6 +136,7 @@ while (($row = mysqli_fetch_assoc($result))
 		)
 	);
 	$curl_result = curl_exec($cSession);
+	#echo $curl_result;
 	curl_close($cSession);
 	
 	$cSession = curl_init();
@@ -154,6 +155,7 @@ while (($row = mysqli_fetch_assoc($result))
 		)
 	);
 	$curl_result = curl_exec($cSession);
+	#echo $curl_result;
 	curl_close($cSession);
 	
   // Add this tweet to the list

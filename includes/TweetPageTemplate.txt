@@ -1,5 +1,5 @@
 {| class="wikitable"
-|+Information about Tweet{tweet_id}
+|+Information about [[http://twitter.com/{screen_name}/status/{tweet_id} Tweet{tweet_id}]]
 !User
 !Text
 !Hashtag(s)
