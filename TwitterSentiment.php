@@ -67,3 +67,6 @@ $wgResourceModules['ext.boilerPlate.foo'] = array(
 
 // Enable Foo
 #$wgBoilerPlateEnableFoo = true;
+
+// Create category and property pages on installation
+require_once __DIR__ . '/includes/CategoriesAndProperties.php';
