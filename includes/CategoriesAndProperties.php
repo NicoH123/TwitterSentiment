@@ -51,8 +51,10 @@ for($i = 0; $i < count($pages); $i++) {
 	$curl_result = curl_exec($cSession);
 	echo $curl_result;
 	curl_close($cSession);
+	
+}		
 
-}
+
 						
 						
 

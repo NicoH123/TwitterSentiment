@@ -6,6 +6,7 @@
  * @ingroup Extensions
  */
 
-class BoilerPlateHooks {
+class TwitterSentimentHooks {
+
 
 }
