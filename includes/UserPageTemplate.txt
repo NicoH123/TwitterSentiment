@@ -1,5 +1,5 @@
 {| class="wikitable"
-|+Information about User{user_id}
+|+Information about [[http://twitter.com/{screen_name} User{user_id}]]
 !Username
 !Name
 |-
@@ -8,4 +8,4 @@
 |}
 
 
-[[Category:User]]
+[[Category:Twitter User]]

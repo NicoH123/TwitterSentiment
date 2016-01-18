@@ -1,5 +1,5 @@
 {| class="wikitable"
-|+Information about Tweet{tweet_id}
+|+Information about [[http://twitter.com/{screen_name}/status/{tweet_id} Tweet{tweet_id}]]
 !User
 !Text
 !Hashtag(s)
@@ -7,7 +7,7 @@
 |-
 |[[Was written by::User{user_id}]]
 |[[Has text::{tweet_text}]]
-|[[Has Hashtag::{tags}]]
+|{tags}
 |[[Was created at::{created_at}]]
 |}
 

@@ -52,7 +52,7 @@ jQuery(document).ready(function($){
     // Use Ajax to get a count of newer tweets from the server
     
     $.get($("#ajax_url").html() + 
-      "plugins/twitter_display/get_new_tweet_count.php?first=" + first_id, 
+      "get_new_tweet_count.php?first=" + first_id, 
       function(count_html) {
   			
         // If new tweets were found, display the new count	
@@ -73,12 +73,12 @@ jQuery(document).ready(function($){
     var old_count = $("#tweet_list").find(".tweet").length;
     $("#more_tweets_button").html("<center><img src='" +
       $("#ajax_url").html() + 
-      "plugins/twitter_display/ajax-loading.gif'></center>");
+      "ajax-loading.gif'></center>");
   		
     // Ask the server for tweets older than the one at the bottom of the list
     var last_id = $(".tweet_id").last().html();
     $.get( $("#ajax_url").html() + 
-      "plugins/twitter_display/get_tweet_list.php?last=" + last_id, 
+      "get_tweet_list.php?last=" + last_id, 
       function(tweet_html){
   
       // Add the server's response to the end of the list

@@ -8,9 +8,9 @@
 * @license GNU Public License
 * @version BETA 0.30
 */
-require_once('140dev_config.php');
-require_once('C:\wamp\www\140dev\libraries\phirehose\Phirehose.php');
-require_once('C:\wamp\www\140dev\libraries\phirehose\OauthPhirehose.php');
+require_once __DIR__ . '/140dev_config.php';
+require_once __DIR__ . '/../libraries/phirehose/Phirehose.php';
+require_once __DIR__ . '/../libraries/phirehose/OauthPhirehose.php';
 class Consumer extends OauthPhirehose
 {
   // A database connection is established at launch and kept open permanently

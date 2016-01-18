@@ -17,10 +17,14 @@ require_once( "\$IP/extensions/[MyExtension]/[MyExtension].php" );
 EOT;
 	exit( 1 );
 }
+
+// Not working yet...
+#require_once __DIR__ . '/includes/CategoriesAndProperties.php';
+
  
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
-	'name' => 'HelloTweet',
+	'name' => 'TwitterFeed',
 	'author' => array(
 		'Your Name',
 	),
@@ -33,20 +37,17 @@ $wgExtensionCredits['specialpage'][] = array(
 /* Setup */
 
 // Register files
-$wgAutoloadClasses['SpecialTweet4'] = __DIR__ . '/specials/SpecialTweet4.php';
-$wgAutoloadClasses['BoilerPlateHooks'] = __DIR__ . '/BoilerPlate.hooks.php';
-$wgAutoloadClasses['SpecialHelloTweet'] = __DIR__ . '/specials/SpecialHelloTweet.php';
-$wgAutoloadClasses['SpecialTweet1'] = __DIR__ . '/specials/SpecialTweet1.php';
+$wgAutoloadClasses['TwitterSentimentHooks'] = __DIR__ . '/TwitterSentiment.hooks.php';
+#$wgAutoloadClasses['CategoriesAndProperties'] = __DIR__ . '/includes/CategoriesAndProperties.php';
+$wgAutoloadClasses['SpecialTwitterFeed'] = __DIR__ . '/specials/SpecialTwitterFeed.php';
 $wgMessagesDirs['TwitterSentiment'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['BoilerPlateAlias'] = __DIR__ . '/BoilerPlate.i18n.alias.php';
 
 // Register hooks
-#$wgHooks['NameOfHook'][] = 'BoilerPlateHooks::onNameOfHook';
+#$wgHooks['ParserFirstCallInit'][] = 'TwitterSentimentHooks::onParserFirstCallInit';
 
 // Register special pages
-$wgSpecialPages['Tweet4'] = 'SpecialTweet4';
-$wgSpecialPages['HelloTweet'] = 'SpecialHelloTweet';
-$wgSpecialPages['Tweet1'] = 'SpecialTweet1';
+$wgSpecialPages['TwitterFeed'] = 'SpecialTwitterFeed';
 
 // Register modules
 $wgResourceModules['ext.boilerPlate.foo'] = array(
@@ -66,8 +67,11 @@ $wgResourceModules['ext.boilerPlate.foo'] = array(
 	'remoteExtPath' => 'examples/BoilerPlate',
 );
 
-
 /* Configuration */
 
 // Enable Foo
 #$wgBoilerPlateEnableFoo = true;
+
+
+
+		

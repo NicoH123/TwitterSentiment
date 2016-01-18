@@ -1,9 +1,2 @@
-{| class="wikitable"
-|+Information about User{user_id}
-!Hashtag
-!in Tweet
-|-
-|[[Has Hashtag::{tag}]]
-|[[Has Tweet::Tweet{tweet_id}]]
-|}
+This hashtag is used in (TODO: number) tweets in this wiki.
 [[Category:Hashtag]]
