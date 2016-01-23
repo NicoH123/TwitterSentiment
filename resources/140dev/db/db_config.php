@@ -9,9 +9,9 @@
 * @version BETA 0.30
 */
   $db_host = 'localhost';
-  $db_user = 'nico';
-  $db_password = 'admin';
-  $db_name = '140dev'; 
+  $db_user = 'wiki_admin';
+  $db_password = 'wiki_admin';
+  $db_name = 'wikidb'; 
 	
 	// MySQL time zone setting to normalize dates
 	define('TIME_ZONE','America/New_York');
