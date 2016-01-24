@@ -1,5 +1,5 @@
 {| class="wikitable"
-|+Information about [[http://twitter.com/{screen_name} User{user_id}]]
+|+Information about [http://twitter.com/{screen_name} User{user_id}]
 !Username
 !Name
 |-

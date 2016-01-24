@@ -17,6 +17,8 @@ $pages = array(	array("Category:Tweet",
 						"This is the common category of all Twitter users of whom Tweets have been stored in this wiki."),
 				array("Category:Hashtag",
 						"A hashtag is used in social networks such as Twitter and Facebook in order to make posts searchable and trends recognizable."),
+				array("Category:Twitter Sentiment Algorithm",
+						"This is the common category of Machine Learning (ML) web services which are used to perform sentiment analysis on the [[:Category:Tweet|Tweets]] stored in this wiki."),
 				array("Property:Was written by",
 						"This property links a written text such as a book or a blogpost to its author. It is of the type [[Has type::Page]]."),
 				array("Property:Has text",
@@ -28,7 +30,11 @@ $pages = array(	array("Category:Tweet",
 				array("Property:Has username",
 						"This property links a user of a social or other network to his or her alias. It is of the type [[Has type::Text]]."),
 				array("Property:Has name",
-						"This property links any kind of resource which is identified by a unique identifier to its representatory name. It is of the type [[Has type::Text]]."));
+						"This property links any kind of resource which is identified by a unique identifier to its representatory name. It is of the type [[Has type::Text]]."),
+				array("Property:Has Datumbox annotation",
+						"This property displays the sentiment of a [[:Category:Tweet|Tweet]] as analyzed by the [[Datumbox Sentiment Analysis|Datumbox]] web service. It is of the type [[Has type::Text]]. \n\n\nPossible values are: [[Allows value::positive]], [[Allows value::neutral]], [[Allows value::negative]]"),
+				array("Datumbox Sentiment Analysis",
+						"The Datumbox Twitter Sentiment Analysis web service is used to analyze [[:Category:Tweet|Tweets]] on this wiki regarding the expressed sentiments. Find more information [[http://www.datumbox.com/machine-learning-api/ here]]. [[Category:Twitter Sentiment Algorithm]]"));
 
 // Create pages via curl
 for($i = 0; $i < count($pages); $i++) {

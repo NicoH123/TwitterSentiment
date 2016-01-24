@@ -12,6 +12,7 @@
 require_once __DIR__ . '/twitter_display_config.php';
 require_once __DIR__ . '/display_lib.php';
 require_once __DIR__ . '/../../db/db_lib.php';
+require_once __DIR__ . '/../../../Datumbox/APIclient_PHP_1.0/TwitterSentiment.php';
 $oDB = new db;
 $wikiURL = 'http://' . $_SERVER['SERVER_NAME'];
 $apiEndpoint = $wikiURL . '/api.php?';
@@ -40,6 +41,9 @@ if (isset($_GET['last'])) {
 $query .= 'ORDER BY tweet_id DESC LIMIT ' . 3; //hier eine Verändung von Dani (und Nico)
 $result = $oDB->select($query);
 
+// Create a new Datumbox API class
+$datumbox = new DatumboxTwitterSentiment();
+
 while (($row = mysqli_fetch_assoc($result))
   &&($tweets_found < 3)) { 
   
@@ -50,6 +54,9 @@ while (($row = mysqli_fetch_assoc($result))
   $current_userpage = $user_page_template;
   $current_hashpage = $hashtag_page_template;
   
+  
+  // Communicate with the Datumbox API
+  $sentiment_datumbox = $datumbox->TwitterSentiment($row['tweet_text']);
   
   // Fill in the template with the current tweet
   $current_tweet = str_replace( '[profile_image_url]', 
@@ -75,11 +82,13 @@ while (($row = mysqli_fetch_assoc($result))
   $current_tweet = str_replace( '[tweet_id]', 
     $row['tweet_id'], $current_tweet); 
 	
+	
 	$current_tweetpage = str_replace('{user_id}', $row['user_id'], $current_tweetpage);
 	$current_tweetpage = str_replace('{screen_name}', $row['screen_name'], $current_tweetpage);
 	$current_tweetpage = str_replace('{tweet_id}', $row['tweet_id'], $current_tweetpage);
 	$current_tweetpage = str_replace('{tweet_text}', $row['tweet_text'], $current_tweetpage);
 	$current_tweetpage = str_replace('{created_at}', $row['created_at'], $current_tweetpage);
+	$current_tweetpage = str_replace('{datumbox}', $sentiment_datumbox, $current_tweetpage);
 	
 	$current_userpage = str_replace('{user_id}', $row['user_id'], $current_userpage);
 	$current_userpage = str_replace('{screen_name}', $row['screen_name'], $current_userpage);
