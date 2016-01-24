@@ -16,7 +16,7 @@
 
 $api = 'http://api.meaningcloud.com/sentiment-2.0';
 $key = '167884a44a359889e003b50c2e90364d';
-$txt = "I really don't like George Bush";
+$txt = "I hate it :(";
 $model = 'general_es';  // general_en / general_es / general_fr 
 
 // We make the request and parse the response to an array

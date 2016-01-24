@@ -31,10 +31,14 @@ $pages = array(	array("Category:Tweet",
 						"This property links a user of a social or other network to his or her alias. It is of the type [[Has type::Text]]."),
 				array("Property:Has name",
 						"This property links any kind of resource which is identified by a unique identifier to its representatory name. It is of the type [[Has type::Text]]."),
+				array("Datumbox Sentiment Analysis",
+						"The Datumbox Twitter Sentiment Analysis web service is used to analyze [[:Category:Tweet|Tweets]] on this wiki regarding the expressed sentiments. Find more information [[http://www.datumbox.com/machine-learning-api/ here]]. [[Category:Twitter Sentiment Algorithm]]"),
+				array("Meaningcloud Sentiment Analysis",
+						"The Meaningcloud Sentiment Analysis web service is used to analyze [[:Category:Tweet|Tweets]] on this wiki regarding the expressed sentiments. Find more information [https://www.meaningcloud.com/developer/sentiment-analysis/doc here]. [[Category:Twitter Sentiment Algorithm]]"),
 				array("Property:Has Datumbox annotation",
 						"This property displays the sentiment of a [[:Category:Tweet|Tweet]] as analyzed by the [[Datumbox Sentiment Analysis|Datumbox]] web service. It is of the type [[Has type::Text]]. \n\n\nPossible values are: [[Allows value::positive]], [[Allows value::neutral]], [[Allows value::negative]]"),
-				array("Datumbox Sentiment Analysis",
-						"The Datumbox Twitter Sentiment Analysis web service is used to analyze [[:Category:Tweet|Tweets]] on this wiki regarding the expressed sentiments. Find more information [[http://www.datumbox.com/machine-learning-api/ here]]. [[Category:Twitter Sentiment Algorithm]]"));
+				array("Property:Has Meaningcloud annotation",
+						"This property displays the sentiment of a [[:Category:Tweet|Tweet]] as analyzed by the [[Meaningcloud Sentiment Analysis|Meaningcloud]] web service. It is of the type [[Has type::Text]]. \n\n\nPossible values are: [[Allows value::P+]], [[Allows value::P]], [[Allows value::NEU]], [[Allows value::N]], [[Allows value::N+]], [[Allows value::NONE]]"));
 
 // Create pages via curl
 for($i = 0; $i < count($pages); $i++) {

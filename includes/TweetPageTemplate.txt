@@ -5,12 +5,14 @@
 !Hashtag(s)
 !Created at
 !Datumbox annotation
+!Meaningcloud annotation
 |-
 |[[Was written by::User{user_id}]]
 |[[Has text::{tweet_text}]]
 |{tags}
 |[[Was created at::{created_at}]]
 |[[Has Datumbox annotation::{datumbox}]]
+|[[Has Meaningcloud annotation::{meaningcloud}]]
 |}
 
 [[Category:Tweet]]
