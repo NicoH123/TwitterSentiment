@@ -12,7 +12,7 @@ Installation (work in progress):
 
 require\_once \_\_DIR\_\_ . '/extensions/TwitterSentiment/TwitterSentiment.php';
 
-* Perform the following configurations in 'extensions/TwitterSentiment/resources/140dev/':
+* Perform the following configurations in 'extensions/TwitterSentiment/resources/140dev/db/':
 
 (INTERNAL:) Write twitter API credentials into '140dev_config.php'.
 
