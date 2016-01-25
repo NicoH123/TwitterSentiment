@@ -2,7 +2,7 @@
 
 Installation (work in progress):
 
-1. Set up a MediaWiki.
+*Set up a MediaWiki.
 
 2. Install Semantic MediaWiki on that MediaWiki.
 
