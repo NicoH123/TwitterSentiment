@@ -134,7 +134,8 @@ while (($row = mysqli_fetch_assoc($result))
 			curl_close($cSession);
 			$hashtags = $hashtags . '[[Has hashtag::Hashtag ' . $hRow['tag'] . '|#' . $hRow['tag'] . ']], '; 
 		}
-		// TODO cut off last ", "
+		// cut off last ", "
+		$hashtags = substr($hashtags,0,strlen($hashtags)-2);
 	}
 	$current_tweetpage = str_replace('{tags}', $hashtags, $current_tweetpage);
 	
