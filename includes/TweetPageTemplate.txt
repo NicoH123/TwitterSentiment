@@ -6,6 +6,7 @@
 !Created at
 !Datumbox annotation
 !Meaningcloud annotation
+!Sentiment140 annotation
 |-
 |[[Was written by::User{user_id}]]
 |[[Has text::{tweet_text}]]
@@ -13,6 +14,7 @@
 |[[Was created at::{created_at}]]
 |[[Has Datumbox annotation::{datumbox}]]
 |[[Has Meaningcloud annotation::{meaningcloud}]]
+|[[Has Sentiment140 annotation::{sentiment140}]]
 |}
 
 [[Category:Tweet]]

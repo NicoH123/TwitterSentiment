@@ -22,6 +22,14 @@ class MeaningcloudSentiment {
 		$key = '167884a44a359889e003b50c2e90364d';
 		$txt = $tweet_text;
 		$model = 'general_en';  // general_en / general_es / general_fr 
+		
+		// Mapping to unify schema in MediaWiki
+		$mapping = array('P+' => 'strong positive',
+						 'P' => 'positive',
+						 'NEU' => 'neutral',
+						 'N' => 'negative',
+						 'N+' => 'strong negative',
+						 'NONE' => 'none');
 
 		// We make the request and parse the response to an array
 		$response = $this->sendPost($api, $key, $model, $txt);
@@ -30,7 +38,7 @@ class MeaningcloudSentiment {
 
 		// Returns the specific fields in the response (sentiment)
 		if(isset($json['score_tag'])) {
-		  return $json['score_tag'];
+		  return $mapping[$json['score_tag']];
 		} else {
 			return "Not found\n";
 		}
