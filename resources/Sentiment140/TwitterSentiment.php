@@ -28,7 +28,11 @@ class Sentiment140TwitterSentiment {
 		
 		curl_close($cSession);
 		
-		$result = $mapping[json_decode($curl_result, true)['results']['polarity']];
+		try {
+			$result = $mapping[json_decode($curl_result, true)['results']['polarity']];
+		} catch (Exception $e) {
+			$result = '';
+		}
 		
 		//Return the result
 		return $result;
