@@ -28,7 +28,7 @@ while (true) {
     // Delete cached copy of tweet
     $oDB->select("DELETE FROM json_cache WHERE cache_id = $cache_id");
 		
-		// Limit tweets tgo a single language,
+		// Limit tweets to a single language,
 		// such as 'en' for English
 		if ($tweet_object->lang <> 'en') {continue;}
 		

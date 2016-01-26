@@ -32,7 +32,6 @@
 .tweet_right {
 	float: right;
 	width: 430px;
-	overflow: hidden;
 	padding-right: 5px;
 }
 .tweet_screen_name a {
@@ -52,12 +51,16 @@
 }
 .tweet_text {
 	font-size: 100%;
+	overflow: visible;
+	
 }
 .tweet_text a {
 	text-decoration: none;
+	
 }
 .tweet_text a:hover {
 	text-decoration: underline;
+	
 }
 .tweet_date a {
 	font-size: 80%;

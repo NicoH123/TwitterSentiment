@@ -46,8 +46,8 @@ $result = $oDB->select($query);
 
 // Create new classes of the ML services
 $datumbox = new DatumboxTwitterSentiment();
-$meaningcloud = new MeaningcloudSentiment();
-$sentiment140 = new Sentiment140TwitterSentiment();
+#$meaningcloud = new MeaningcloudSentiment();
+#$sentiment140 = new Sentiment140TwitterSentiment();
 
 while (($row = mysqli_fetch_assoc($result))
   &&($tweets_found < 3)) { 
@@ -62,8 +62,8 @@ while (($row = mysqli_fetch_assoc($result))
   
   // Communicate with the ML APIs
   $sentiment_datumbox = $datumbox->TwitterSentiment($row['tweet_text']);
-  $sentiment_meaningcloud = $meaningcloud->Sentiment($row['tweet_text']);
-  $sentiment_sentiment140 = $sentiment140->TwitterSentiment($row['tweet_text']);
+ # $sentiment_meaningcloud = $meaningcloud->Sentiment($row['tweet_text']);
+ # $sentiment_sentiment140 = $sentiment140->TwitterSentiment($row['tweet_text']);
   
   // Fill in the template with the current tweet
   $current_tweet = str_replace( '[profile_image_url]', 
@@ -96,8 +96,8 @@ while (($row = mysqli_fetch_assoc($result))
 	$current_tweetpage = str_replace('{tweet_text}', $row['tweet_text'], $current_tweetpage);
 	$current_tweetpage = str_replace('{created_at}', $row['created_at'], $current_tweetpage);
 	$current_tweetpage = str_replace('{datumbox}', $sentiment_datumbox, $current_tweetpage);
-	$current_tweetpage = str_replace('{meaningcloud}', $sentiment_meaningcloud, $current_tweetpage);
-	$current_tweetpage = str_replace('{sentiment140}', $sentiment_sentiment140, $current_tweetpage);
+#	$current_tweetpage = str_replace('{meaningcloud}', $sentiment_meaningcloud, $current_tweetpage);
+#	$current_tweetpage = str_replace('{sentiment140}', $sentiment_sentiment140, $current_tweetpage);
 	
 	$current_userpage = str_replace('{user_id}', $row['user_id'], $current_userpage);
 	$current_userpage = str_replace('{screen_name}', $row['screen_name'], $current_userpage);
@@ -115,13 +115,14 @@ while (($row = mysqli_fetch_assoc($result))
 		#echo(' This tweet contains ' . $numHashtags . ' hashtags.');
 		while($hRow = mysqli_fetch_assoc($tagResult)) {
 			$cSession = curl_init();
+			$current_hashpage = str_replace('{tag}', $hRow['tag'], $current_hashpage);
 			curl_setopt_array($cSession, array(
 				CURLOPT_RETURNTRANSFER => 1,
 				CURLOPT_URL => $apiEndpoint,
 				CURLOPT_POST => 1,
 				CURLOPT_POSTFIELDS => array(
 									'action' => 'edit',
-									'title' => 'Hashtag ' . $hRow['tag'],
+									'title' => 'Hashtag ' . $hRow['tag'] ,
 									'createonly' => 'true',
 									'text' => $current_hashpage,
 									'summary' => 'Created automatically from the 140dev database.',

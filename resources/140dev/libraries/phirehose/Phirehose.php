@@ -142,13 +142,13 @@ abstract class Phirehose
 
   // Config type vars - override in subclass if desired
   protected $connectFailuresMax = 20;
-  protected $connectTimeout = 5;
-  protected $readTimeout = 5;
+  protected $connectTimeout = 8; #before 5
+  protected $readTimeout = 8; #before 5
   protected $idleReconnectTimeout = 90;
-  protected $avgPeriod = 60;
-  protected $status_length_base = 10;
+  protected $avgPeriod = 70; #before 60
+  protected $status_length_base = 12; # before 10
   protected $userAgent       = 'Phirehose/1.0RC +https://github.com/fennb/phirehose';
-  protected $filterCheckMin = 5;
+  protected $filterCheckMin = 8; #before:5
   protected $filterUpdMin   = 120;
   protected $tcpBackoff      = 1;
   protected $tcpBackoffMax  = 16;
