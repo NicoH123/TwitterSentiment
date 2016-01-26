@@ -57,7 +57,7 @@ while (($row = mysqli_fetch_assoc($result))
   $current_tweet = $tweet_template;
   $current_tweetpage = $tweet_page_template;
   $current_userpage = $user_page_template;
-  $current_hashpage = $hashtag_page_template;
+  $hashpage = $hashtag_page_template;
   
   
   // Communicate with the ML APIs
@@ -114,6 +114,8 @@ while (($row = mysqli_fetch_assoc($result))
 	if($numHashtags > 0) {
 		#echo(' This tweet contains ' . $numHashtags . ' hashtags.');
 		while($hRow = mysqli_fetch_assoc($tagResult)) {
+			
+			$current_hashpage = str_replace('{tag}', $hRow['tag'], $hashpage);
 			$cSession = curl_init();
 			curl_setopt_array($cSession, array(
 				CURLOPT_RETURNTRANSFER => 1,

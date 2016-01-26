@@ -1,3 +1,6 @@
-This hashtag is used in (TODO: number) tweets in this wiki.
-Show [https://twitter.com/hashtag/{tag}?lang=de the Hashtag] on Twitter
+[https://twitter.com/hashtag/{tag}?lang=en View this Hashtag on Twitter] 
 [[Category:Hashtag]]
+
+Tweets using this hashtag:
+
+{{#ask: [[Category:Tweet]] [[Has hashtag::Hashtag {tag}]]}}
