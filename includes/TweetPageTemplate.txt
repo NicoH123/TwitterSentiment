@@ -1,20 +1,9 @@
-{| class="wikitable"
-|+Information about [http://twitter.com/{screen_name}/status/{tweet_id} Tweet{tweet_id}]
-!User
-!Text
-!Hashtag(s)
-!Created at
-!Datumbox annotation
-!Meaningcloud annotation
-!Sentiment140 annotation
-|-
-|[[Was written by::User{user_id}]]
-|[[Has text::{tweet_text}]]
-|{tags}
-|[[Was created at::{created_at}]]
-|[[Has Datumbox annotation::{datumbox}]]
-|[[Has Meaningcloud annotation::{meaningcloud}]]
-|[[Has Sentiment140 annotation::{sentiment140}]]
-|}
-
+[http://twitter.com/{screen_name}/status/{tweet_id} View this tweet on Twitter]
+[[Was written by::User{user_id}| ]]
+[[Has text::{tweet_text}| ]]             {tags}
+[[Was created at::{created_at}| ]]
+[[Has Datumbox annotation::{datumbox}| ]]
+[[Has Meaningcloud annotation::{meaningcloud}| ]]
+[[Has Sentiment140 annotation::{sentiment140}| ]]
 [[Category:Tweet]]
+__SHOWFACTBOX__

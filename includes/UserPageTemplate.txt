@@ -1,11 +1,9 @@
-{| class="wikitable"
-|+Information about [http://twitter.com/{screen_name} User{user_id}]
-!Username
-!Name
-|-
-|[[Has username::{screen_name}]]
-|[[Has name::{name}]]
-|}
-
-
+[http://twitter.com/{screen_name} View this user on Twitter]
+[[Has username::{screen_name}| ]]
+[[Has name::{name}| ]]
 [[Category:Twitter User]]
+__SHOWFACTBOX__
+
+Tweets by this user:
+
+{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]]}}
