@@ -3,4 +3,4 @@
 
 Tweets using this hashtag:
 
-{{#ask: [[Category:Tweet]] [[Has hashtag::Hashtag {tag}]]}}
+{{#ask: [[Category:Tweet]] [[Has hashtag::Hashtag {tag}]] |format = table}}
