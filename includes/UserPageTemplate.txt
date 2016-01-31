@@ -6,4 +6,4 @@ __SHOWFACTBOX__
 
 Tweets by this user:
 
-{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]]}}
+{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] |format = table}}
