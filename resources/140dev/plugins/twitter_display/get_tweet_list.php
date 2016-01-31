@@ -111,52 +111,29 @@ while (($row = mysqli_fetch_assoc($result))
 	#echo('Hashtag query: ' . $tagQuery . '</br>');
 	$tagResult = $oDB->select($tagQuery);
 	$numHashtags = mysqli_num_rows($tagResult);
+	
+	// 2dim array to save hashtag pages and names in order to create them AFTER the tweet page.
+	$hashtag_array = [];
+	
 	if($numHashtags > 0) {
+		
 		#echo(' This tweet contains ' . $numHashtags . ' hashtags.');
 		while($hRow = mysqli_fetch_assoc($tagResult)) {
 			
 			$current_hashpage = str_replace('{tag}', $hRow['tag'], $hashpage);
-			$cSession = curl_init();
-			curl_setopt_array($cSession, array(
-				CURLOPT_RETURNTRANSFER => 1,
-				CURLOPT_URL => $apiEndpoint,
-				CURLOPT_POST => 1,
-				CURLOPT_POSTFIELDS => array(
-									'action' => 'edit',
-									'title' => 'Hashtag ' . $hRow['tag'], #Daniel: removed create_only for enabling dynamic updates
-									'text' => $current_hashpage,
-									'summary' => 'Created automatically from the 140dev database.',
-									'token' => "+\\",
-					)
-				)
-			);
-			$curl_result = curl_exec($cSession);
-			#echo $curl_result;
-			curl_close($cSession);
+			$current_hashtitle = 'Hashtag ' . $hRow['tag'];
+			
+			$hashtag_array[] = array($current_hashtitle, $current_hashpage);
+			
 			$hashtags = $hashtags . '[[Has hashtag::Hashtag ' . $hRow['tag'] . '| ]]'; 
+			
+			
 		}
 
 	}
 	$current_tweetpage = str_replace('{tags}', $hashtags, $current_tweetpage);
 	
-	$cSession = curl_init();
-	curl_setopt_array($cSession, array(
-		CURLOPT_RETURNTRANSFER => 1,
-		CURLOPT_URL => $apiEndpoint,
-		CURLOPT_POST => 1,
-		CURLOPT_POSTFIELDS => array(
-							'action' => 'edit',
-							'title' => 'User' . $row['user_id'], #Nico: removed create_only for enabling dynamic updates
-							'text' => $current_userpage,
-							'summary' => 'Created automatically from the 140dev database.',
-							'token' => "+\\",
-			)
-		)
-	);
-	$curl_result = curl_exec($cSession);
-	#echo $curl_result;
-	curl_close($cSession);
-	
+	// Add the Tweet as page.
 	$cSession = curl_init();
 	curl_setopt_array($cSession, array(
 		CURLOPT_RETURNTRANSFER => 1,
@@ -175,6 +152,51 @@ while (($row = mysqli_fetch_assoc($result))
 	$curl_result = curl_exec($cSession);
 	#echo $curl_result;
 	curl_close($cSession);
+	
+	// Add the user as page.
+	$cSession = curl_init();
+	curl_setopt_array($cSession, array(
+		CURLOPT_RETURNTRANSFER => 1,
+		CURLOPT_URL => $apiEndpoint,
+		CURLOPT_POST => 1,
+		CURLOPT_POSTFIELDS => array(
+							'action' => 'edit',
+							'title' => 'User' . $row['user_id'], #Nico: removed create_only for enabling dynamic updates
+							'text' => $current_userpage,
+							'summary' => 'Created automatically from the 140dev database.',
+							'token' => "+\\",
+			)
+		)
+	);
+	$curl_result = curl_exec($cSession);
+	#echo $curl_result;
+	curl_close($cSession);
+	
+	// Add all hashtags as pages.
+	foreach($hashtag_array as $tweet) {
+		$tagtitle = $tweet[0];
+		$tagtext = $tweet[1];
+		
+		$cSession = curl_init();
+		curl_setopt_array($cSession, array(
+			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_URL => $apiEndpoint,
+			CURLOPT_POST => 1,
+			CURLOPT_POSTFIELDS => array(
+								'action' => 'edit',
+								'title' => $tagtitle, #Daniel: removed create_only for enabling dynamic updates
+								'text' => $tagtext,
+								'summary' => 'Created automatically from the 140dev database.',
+								'token' => "+\\",
+				)
+			)
+		);
+		$curl_result = curl_exec($cSession);
+		#echo $curl_result;
+		curl_close($cSession);
+	}
+	
+	
 	
   // Add this tweet to the list
   $tweet_list .= $current_tweet;
