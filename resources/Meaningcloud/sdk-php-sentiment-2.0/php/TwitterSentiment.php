@@ -40,7 +40,7 @@ class MeaningcloudSentiment {
 		if(isset($json['score_tag'])) {
 		  return $mapping[$json['score_tag']];
 		} else {
-			return "Not found\n";
+			return "none";
 		}
 		
 	}

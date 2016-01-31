@@ -42,7 +42,7 @@ $pages = array(	array("Category:Tweet",
 				array("Property:Has Meaningcloud annotation",
 						"This property displays the sentiment of a [[:Category:Tweet|Tweet]] as analyzed by the [[Meaningcloud Sentiment Analysis|Meaningcloud]] web service. It is of the type [[Has type::Text]]. \n\n\nPossible values are: [[Allows value::strong positive]], [[Allows value::positive]], [[Allows value::neutral]], [[Allows value::negative]], [[Allows value::strong negative]], [[Allows value::none]]"),
 				array("Property:Has Sentiment140 annotation",
-						"This property displays the sentiment of a [[:Category:Tweet|Tweet]] as analyzed by the [[Sentiment140 Sentiment Analysis|Sentiment140]] web service. It is of the type [[Has type::Text]]. \n\n\nPossible values are: [[Allows value::positive]], [[Allows value::neutral]], [[Allows value::negative]]"));
+						"This property displays the sentiment of a [[:Category:Tweet|Tweet]] as analyzed by the [[Sentiment140 Sentiment Analysis|Sentiment140]] web service. It is of the type [[Has type::Text]]. \n\n\nPossible values are: [[Allows value::positive]], [[Allows value::neutral]], [[Allows value::negative]], [[Allows value::none]]"));
 
 // Create pages via curl
 for($i = 0; $i < count($pages); $i++) {

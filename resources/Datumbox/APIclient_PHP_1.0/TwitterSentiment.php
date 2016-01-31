@@ -10,7 +10,10 @@ class DatumboxTwitterSentiment {
 
 		$DatumboxAPI = new DatumboxAPI($api_key);
 		
-		$DocumentClassification['TwitterSentimentAnalysis']=$DatumboxAPI->TwitterSentimentAnalysis($tweet_text);
+		// PHP makes problems with "@" in HTTP POST --> workaround.
+		$tweet_escaped = addcslashes ( $tweet_text , '@' );
+		
+		$DocumentClassification['TwitterSentimentAnalysis']=$DatumboxAPI->TwitterSentimentAnalysis($tweet_escaped);
 
 
 		unset($DatumboxAPI);

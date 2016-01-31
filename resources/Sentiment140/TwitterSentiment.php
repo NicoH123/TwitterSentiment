@@ -28,10 +28,15 @@ class Sentiment140TwitterSentiment {
 		
 		curl_close($cSession);
 		
-		try {
-			$result = $mapping[json_decode($curl_result, true)['results']['polarity']];
-		} catch (Exception $e) {
-			$result = '';
+		$result_array = json_decode($curl_result, true);
+		
+		#var_dump($result_array);
+		
+		
+		if( isset($result_array['results'])){
+			$result = $mapping[$result_array['results']['polarity']];
+		} else {
+			$result = 'none';
 		}
 		
 		//Return the result
