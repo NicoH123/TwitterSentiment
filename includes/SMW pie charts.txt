@@ -1,0 +1,110 @@
+Siehe auch Hashtag AQ
+- TODO nebeneinander? auch bei Usern? Special:TwitterTrending? --> alternativ unter Category:Hashtag
+- neu aufsetzen
+- Meaningcloud nach oben
+- nice to have: pro Service ein Pie Chart
+
+
+
+
+[https://twitter.com/hashtag/AQ?lang=en View this Hashtag on Twitter] 
+[[Category:Hashtag]]
+
+Datumbox sentiment analysis:
+
+{{#pPie: exploded|3d|labels=true|data=
+positive,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Datumbox annotation::positive]]
+ |format=count
+}}
+negative,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Datumbox annotation::negative]]
+ |format=count
+}}
+neutral,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Datumbox annotation::neutral]]
+ |format=count
+}}
+
+}}
+
+
+Meaningcloud sentiment analysis:
+
+{{#pPie: exploded|3d|labels=true|data=
+strong positive,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Meaningcloud annotation::strong positive]]
+ |format=count
+}}
+positive,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Meaningcloud annotation::positive]]
+ |format=count
+}}
+neutral,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Meaningcloud annotation::neutral]]
+ |format=count
+}}
+negative,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Meaningcloud annotation::negative]]
+ |format=count
+}}
+strong negative,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Meaningcloud annotation::strong negative]]
+ |format=count
+}}
+none,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Meaningcloud annotation::none]]
+ |format=count
+}}
+
+}}
+
+Sentiment140 sentiment analysis:
+
+{{#pPie: exploded|3d|labels=true|data=
+positive,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Sentiment140 annotation::positive]]
+ |format=count
+}}
+negative,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Sentiment140 annotation::negative]]
+ |format=count
+}}
+neutral,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Sentiment140 annotation::neutral]]
+ |format=count
+}}
+none,{{#ask: 
+ [[Category:Tweet]]
+ [[Has hashtag::Hashtag AQ]]
+ [[Has Sentiment140 annotation::none]]
+ |format=count
+}}
+
+}}
+
+Tweets using this hashtag: {{#ask: [[Category:Tweet]] [[Has hashtag::Hashtag AQ]] |format = table}}
