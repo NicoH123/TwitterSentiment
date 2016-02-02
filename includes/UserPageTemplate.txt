@@ -4,6 +4,37 @@
 [[Category:Twitter User]]
 __SHOWFACTBOX__
 
+
+Datumbox sentiment analysis:
+
+{{#pPie: exploded|3d|labels=true|data=
+  positive,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Datumbox annotation::positive]] |format=count}}
+  negative,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Datumbox annotation::negative]] |format=count}}
+  neutral,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Datumbox annotation::neutral]] |format=count}}
+}}
+
+
+Meaningcloud sentiment analysis:
+
+{{#pPie: exploded|3d|labels=true|data=
+  strong positive,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Meaningcloud annotation::strong positive]] |format=count}}
+  positive,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Meaningcloud annotation::positive]] |format=count}}
+  neutral,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Meaningcloud annotation::neutral]] |format=coun}}
+  negative,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Meaningcloud annotation::negative]] |format=count}}
+  strong negative,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Meaningcloud annotation::strong negative]] |format=count}}
+  none,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Meaningcloud annotation::none]] |format=count}}
+}}
+
+Sentiment140 sentiment analysis:
+
+{{#pPie: exploded|3d|labels=true|data=
+  positive,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Sentiment140 annotation::positive]] |format=count}}
+  negative,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Sentiment140 annotation::negative]] |format=count}}
+  neutral,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Sentiment140 annotation::neutral]] |format=count}}
+  none,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Sentiment140 annotation::none]] |format=count}}
+}}
+
+
 Tweets by this user:
 
 {{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] |format = table}}
