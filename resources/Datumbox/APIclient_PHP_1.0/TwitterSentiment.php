@@ -14,13 +14,17 @@ class DatumboxTwitterSentiment {
 		$tweet_escaped = addcslashes ( $tweet_text , '@' );
 		
 		$DocumentClassification['TwitterSentimentAnalysis']=$DatumboxAPI->TwitterSentimentAnalysis($tweet_escaped);
-
-
+		
 		unset($DatumboxAPI);
-
-
+		
+		
 		//Return the result
-		return $DocumentClassification['TwitterSentimentAnalysis'];
+		if(isset($DocumentClassification['TwitterSentimentAnalysis'])) {
+			return $DocumentClassification['TwitterSentimentAnalysis'];
+		} else {
+			return "none";
+		}
+
 
 	}
 

@@ -7,6 +7,7 @@ Datumbox sentiment analysis:
   positive,{{#ask: [[Category:Tweet]] [[Has hashtag::Hashtag {tag}]] [[Has Datumbox annotation::positive]] |format=count}}
   negative,{{#ask: [[Category:Tweet]] [[Has hashtag::Hashtag {tag}]] [[Has Datumbox annotation::negative]] |format=count}}
   neutral,{{#ask: [[Category:Tweet]] [[Has hashtag::Hashtag {tag}]] [[Has Datumbox annotation::neutral]] |format=count}}
+  none,{{#ask: [[Category:Tweet]] [[Has hashtag::Hashtag {tag}]] [[Has Datumbox annotation::none]] |format=count}}
 }}
 
 

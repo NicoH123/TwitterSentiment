@@ -11,6 +11,7 @@ Datumbox sentiment analysis:
   positive,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Datumbox annotation::positive]] |format=count}}
   negative,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Datumbox annotation::negative]] |format=count}}
   neutral,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Datumbox annotation::neutral]] |format=count}}
+  none,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Datumbox annotation::none]] |format=count}}
 }}
 
 
