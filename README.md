@@ -28,7 +28,7 @@ TwitterSentiment is an extension for Semantic MediaWiki which enables you to qui
 
 ## Usage
 
-Open your MediaWiki and go to the special page `Special:TwitterFeed`. There you find a feed of tweets related to the search terms defined by you:
+Open your MediaWiki and go to the special page `Special:TwitterFeed`. There you find a feed of tweets related to the search terms defined by you. If you click on a username or user profile pic, you'll get to that user's wiki page. To get to a tweet's wiki page, click on the time specification below the tweet. By clicking on a hashtag in a tweet, you'll get to that hashtag's wiki page.
 
-![Example of TwitterSentiment feed](./Unbenannt.png)
+On the respective pages, you'll find details and visualizations about the respective entity's sentiments. Links to related entities are also provided. By clicking on the small magnifying glasses in the factboxes, you can trigger inline queries which show entities with similar values (TODO das schöner + credits).
 
