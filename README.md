@@ -30,5 +30,5 @@ TwitterSentiment is an extension for Semantic MediaWiki which enables you to qui
 
 Open your MediaWiki and go to the special page `Special:TwitterFeed`. There you find a feed of tweets related to the search terms defined by you:
 
-![Example of TwitterSentiment feed](Unbenannt.png)
+![Example of TwitterSentiment feed](./Unbenannt.png)
 
