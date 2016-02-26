@@ -1,12 +1,14 @@
 <?php 
 /**
-* display_lib.php (modified Daniel Wenz & Nico Haubner)
+* display_lib.php (modified by Daniel Wenz & Nico Haubner, TwitterSentiment)
 * Convert entities into links within a tweet's text
 * Latest copy of this code: http://140dev.com/free-twitter-api-source-code-library/
 * @author Adam Green <140dev@gmail.com>
 * @license GNU Public License
 * @version BETA 0.30
 */
+
+// TwitterSentiment: This function was modified to provide links to wiki pages.
 function linkify($text,$tweet_id) {
 
  $wikiURL = 'http://' . $_SERVER['SERVER_NAME'];
@@ -15,12 +17,12 @@ function linkify($text,$tweet_id) {
   $text = preg_replace("/[[:alpha:]]+:\/\/[^<>[:space:]]+[[:alnum:]\/]/i",
   	"<a href=\"\\0\" target=\"_blank\">\\0</a>", $text); 
 	
-	// Linkify @mentions (commented out by Nico)
+	// Linkify @mentions
   /*$text = preg_replace("/\B@(\w+(?!\/))\b/i", 
   	'<a href="https://twitter.com/\\1" title="' .
   	USER_MENTION_TITLE . '\\1">@\\1</a>', $text); */
     	
-	// Linkify #hashtags (modified Nico)
+	// Linkify #hashtags
   $text = preg_replace("/\B(?<![=\/])#([\w]+[a-z]+([0-9]+)?)/i", 
   	'<a href=' . $wikiURL . '/index.php/Hashtag_\\1 title="' .
   	HASHTAG_TITLE . '\\1">#\\1</a>', $text); 

@@ -30,8 +30,6 @@ class Sentiment140TwitterSentiment {
 		
 		$result_array = json_decode($curl_result, true);
 		
-		#var_dump($result_array);
-		
 		
 		if( isset($result_array['results'])){
 			$result = $mapping[$result_array['results']['polarity']];

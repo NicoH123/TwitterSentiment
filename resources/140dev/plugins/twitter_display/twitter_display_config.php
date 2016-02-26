@@ -1,6 +1,6 @@
 <?php
 /**
-* twitter_display_config.php
+* twitter_display_config.php (modified by Daniel Wen & Nicolas Haubner, TwitterSentiment)
 * Configuration options for the Twitter display plugin
 * Latest copy of this code: http://140dev.com/free-twitter-api-source-code-library/
 * @author Adam Green <140dev@gmail.com>
@@ -12,6 +12,7 @@
 // You MUST fill this in with the correct URL for the 140dev code
 // For example, if the code is at http://mydomain.com/twitter_display/
 // change to define('AJAX_URL', 'http://mydomain.com/twitter_display/');
+// TwitterSentiment: dynamically build the AJAX URL from the MediaWiki server
 $ajax_url = 'http://' . $_SERVER['SERVER_NAME'] . '/extensions/TwitterSentiment/resources/140dev/plugins/twitter_display/';
 define('AJAX_URL', $ajax_url);
 

@@ -1,6 +1,7 @@
 <?php
 /**
- * HelloWorld SpecialPage for BoilerPlate extension
+ * SpecialPage containing the Twitter feed. Daniel Wenz & Nicolas Haubner, TwitterSentiment
+ * Based on: HelloWorld SpecialPage for BoilerPlate extension
  *
  * @file
  * @ingroup Extensions
@@ -15,7 +16,7 @@ class SpecialTwitterFeed extends SpecialPage {
 	 * Show the page to the user
 	 *
 	 * @param string $sub The subpage string argument (if any).
-	 *  [[Special:HelloWorld/subpage]].
+	 *  [[Special:TwitterFeed/subpage]].
 	 */
 	public function execute( $sub ) {
 		
@@ -39,12 +40,11 @@ class SpecialTwitterFeed extends SpecialPage {
 		AJAX_URL, $tweet_page); 
 		$tweet_page = str_replace( '[more_button]', 
 		MORE_BUTTON, $tweet_page); 
-		//Optional Ende
+		// Optional End
 		
 		$out = $this->getOutput();
-		$out->addModules( 'ext.boilerPlate.foo' );
 		$out->setPageTitle( "Twitter Sentiment Analysis" );
-		// Nico added 20160113
+		// Show page
 		$out->addHTML('<link rel="stylesheet" href="' . AJAX_URL . 'default.css" type="text/css" />
 						<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js">
 						</script>

@@ -1,4 +1,4 @@
-<!--modified by Nico for MediaWiki-->
+<!-- TwitterSentiment: modified for MediaWiki-->
 <div class="tweet">
   <div class="tweet_id hidden">[tweet_id]</div>
   <div class="tweet_image">

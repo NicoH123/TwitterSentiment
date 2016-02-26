@@ -1,7 +1,7 @@
 <?php 
 /**
-* get_tweet_list.php (modified Daniel Wenz & Nico Haubner)
-* Return a list of the most recent tweets as HTML and create wiki pages for them
+* get_tweet_list.php (modified by Daniel Wenz & Nico Haubner, TwitterSentiment)
+* Return a list of the most recent tweets as HTML (and create wiki pages for them)
 * Older tweets are requested with the query of last=[tweet_id] by site.js
 * 
 * @author Adam Green <140dev@gmail.com>
@@ -9,6 +9,7 @@
 * @version BETA 0.30
 */
 
+// TwitterSentiment: The Sentiment Analysis web services are included.
 require_once __DIR__ . '/twitter_display_config.php';
 require_once __DIR__ . '/display_lib.php';
 require_once __DIR__ . '/../../db/db_lib.php';
@@ -17,6 +18,7 @@ require_once __DIR__ . '/../../../Meaningcloud/sdk-php-sentiment-2.0/php/Twitter
 require_once __DIR__ . '/../../../Sentiment140/TwitterSentiment.php';
 
 $oDB = new db;
+// TwitterSentiment: The API endpoint of the Mediawiki.
 $wikiURL = 'http://' . $_SERVER['SERVER_NAME'];
 $apiEndpoint = $wikiURL . '/api.php?';
 
@@ -24,7 +26,7 @@ $query = 'SELECT profile_image_url, created_at, screen_name, user_id,screen_name
   name, tweet_text, tweet_id
   FROM tweets ';
 
-// Use the templates for wiki pages
+// TwitterSentiment: Use the templates for wiki pages
 $tweet_page_template = file_get_contents(__DIR__ . '/../../../../includes/TweetPageTemplate.txt');
 $user_page_template = file_get_contents(__DIR__ . '/../../../../includes/UserPageTemplate.txt');
 $hashtag_page_template = file_get_contents(__DIR__ . '/../../../../includes/HashtagPageTemplate.txt');
@@ -40,11 +42,11 @@ if (isset($_GET['last'])) {
   $query .= 'WHERE tweet_id < "' . $_GET['last'] . '" ';
 }
 
-
-$query .= 'ORDER BY tweet_id DESC LIMIT ' . 3; //hier eine Verändung von Dani (und Nico)
+// TwitterSentiment
+$query .= 'ORDER BY tweet_id DESC LIMIT ' . 3;
 $result = $oDB->select($query);
 
-// Create new classes of the ML services
+// TwitterSentiment: Create new classes of the ML services
 $datumbox = new DatumboxTwitterSentiment();
 $meaningcloud = new MeaningcloudSentiment();
 $sentiment140 = new Sentiment140TwitterSentiment();
@@ -55,12 +57,14 @@ while (($row = mysqli_fetch_assoc($result))
   ++$tweets_found;
   // create a fresh copy of the empty template
   $current_tweet = $tweet_template;
+  
+  // TwitterSentiment: page templates
   $current_tweetpage = $tweet_page_template;
   $current_userpage = $user_page_template;
   $hashpage = $hashtag_page_template;
   
   
-  // Communicate with the ML APIs
+  // TwitterSentiment: Communicate with the ML APIs
   $sentiment_datumbox = $datumbox->TwitterSentiment($row['tweet_text']);
   $sentiment_meaningcloud = $meaningcloud->Sentiment($row['tweet_text']);
   $sentiment_sentiment140 = $sentiment140->TwitterSentiment($row['tweet_text']);
@@ -89,7 +93,7 @@ while (($row = mysqli_fetch_assoc($result))
   $current_tweet = str_replace( '[tweet_id]', 
     $row['tweet_id'], $current_tweet); 
 	
-	
+	// TwitterSentiment: Fill page templates
 	$current_tweetpage = str_replace('{user_id}', $row['user_id'], $current_tweetpage);
 	$current_tweetpage = str_replace('{screen_name}', $row['screen_name'], $current_tweetpage);
 	$current_tweetpage = str_replace('{tweet_id}', $row['tweet_id'], $current_tweetpage);
@@ -103,21 +107,20 @@ while (($row = mysqli_fetch_assoc($result))
 	$current_userpage = str_replace('{screen_name}', $row['screen_name'], $current_userpage);
 	$current_userpage = str_replace('{name}', $row['name'], $current_userpage);
 	
-	// Look for hashtags to this tweet. If there are 1 or more, add to tweet.
+	// TwitterSentiment: Look for hashtags to this tweet. If there are 1 or more, add to tweet.
 	$hashtags = '';
 	$tagQuery = 'SELECT DISTINCT	tag as tag
 				FROM				tweet_tags
 				WHERE				tweet_id = ' . $row['tweet_id'];
-	#echo('Hashtag query: ' . $tagQuery . '</br>');
 	$tagResult = $oDB->select($tagQuery);
 	$numHashtags = mysqli_num_rows($tagResult);
 	
-	// 2dim array to save hashtag pages and names in order to create them AFTER the tweet page.
+	// TwitterSentiment: 2dim array to save hashtag pages and names in order to create them AFTER the tweet page.
 	$hashtag_array = [];
 	
+	// TwitterSentiment: fill array
 	if($numHashtags > 0) {
 		
-		#echo(' This tweet contains ' . $numHashtags . ' hashtags.');
 		while($hRow = mysqli_fetch_assoc($tagResult)) {
 			
 			$current_hashpage = str_replace('{tag}', $hRow['tag'], $hashpage);
@@ -133,7 +136,7 @@ while (($row = mysqli_fetch_assoc($result))
 	}
 	$current_tweetpage = str_replace('{tags}', $hashtags, $current_tweetpage);
 	
-	// Add the Tweet as page.
+	// TwitterSentiment: Add the Tweet as a wiki page.
 	$cSession = curl_init();
 	curl_setopt_array($cSession, array(
 		CURLOPT_RETURNTRANSFER => 1,
@@ -150,10 +153,9 @@ while (($row = mysqli_fetch_assoc($result))
 		)
 	);
 	$curl_result = curl_exec($cSession);
-	#echo $curl_result;
 	curl_close($cSession);
 	
-	// Add the user as page.
+	// TwitterSentiment: Add the user as a wiki page.
 	$cSession = curl_init();
 	curl_setopt_array($cSession, array(
 		CURLOPT_RETURNTRANSFER => 1,
@@ -169,10 +171,9 @@ while (($row = mysqli_fetch_assoc($result))
 		)
 	);
 	$curl_result = curl_exec($cSession);
-	#echo $curl_result;
 	curl_close($cSession);
 	
-	// Add all hashtags as pages.
+	// TwitterSentiment: Add all hashtags as wiki pages.
 	foreach($hashtag_array as $tweet) {
 		$tagtitle = $tweet[0];
 		$tagtext = $tweet[1];
@@ -192,7 +193,6 @@ while (($row = mysqli_fetch_assoc($result))
 			)
 		);
 		$curl_result = curl_exec($cSession);
-		#echo $curl_result;
 		curl_close($cSession);
 	}
 	

@@ -1,0 +1,1 @@
+The 140dev Streaming API Framework (http://140dev.com/free-twitter-api-source-code-library/) is used by Twitter Sentiment. Credits go to Adam Green. The source code had to be partially modified in order to work for our extension. Wherever modifications (other than defining keywords, authentication parameters, etc.) were made, they are marked in comments.

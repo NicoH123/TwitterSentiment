@@ -1,6 +1,6 @@
 <?php
 /**
-* Category and property pages need to be created on installation of the TwitterSentiment extension.
+* Category and property pages need to be created after installation of the TwitterSentiment extension.
 */
 
 // Define endpoint here
@@ -66,9 +66,5 @@ for($i = 0; $i < count($pages); $i++) {
 	echo $curl_result;
 	curl_close($cSession);
 	
-}		
-
-
-						
-						
+}
 
