@@ -28,4 +28,4 @@ Execute the scripts 'get_tweets.php' and 'parse_tweets.php' in the background to
 
 
 
-TODO: define keywords
+TODO: define keywords, install pcharts4mw
