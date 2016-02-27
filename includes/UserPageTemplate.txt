@@ -5,19 +5,17 @@
 __SHOWFACTBOX__
 
 
-Datumbox sentiment analysis:
-
-{{#pPie: exploded|3d|labels=true|data=
+<div>
+<div style="width: 30%; float: left">
+{{#pPie: title=Datumbox sentiment analysis|marginx=0|size=350|percentages=false|legend=bottom|data=
   positive,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Datumbox annotation::positive]] |format=count}}
   negative,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Datumbox annotation::negative]] |format=count}}
   neutral,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Datumbox annotation::neutral]] |format=count}}
   none,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Datumbox annotation::none]] |format=count}}
 }}
-
-
-Meaningcloud sentiment analysis:
-
-{{#pPie: exploded|3d|labels=true|data=
+</div>
+<div style="width: 30%; float: left">
+{{#pPie: title=Meaningcloud sentiment analysis|marginx=0|size=350|percentages=false|legend=bottom|data=
   strong positive,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Meaningcloud annotation::strong positive]] |format=count}}
   positive,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Meaningcloud annotation::positive]] |format=count}}
   neutral,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Meaningcloud annotation::neutral]] |format=coun}}
@@ -25,17 +23,15 @@ Meaningcloud sentiment analysis:
   strong negative,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Meaningcloud annotation::strong negative]] |format=count}}
   none,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Meaningcloud annotation::none]] |format=count}}
 }}
-
-Sentiment140 sentiment analysis:
-
-{{#pPie: exploded|3d|labels=true|data=
+</div>
+<div style="width: 30%; float: left">
+{{#pPie: title=Sentiment140 sentiment analysis|marginx=0|size=350|percentages=false|legend=bottom|data=
   positive,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Sentiment140 annotation::positive]] |format=count}}
   negative,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Sentiment140 annotation::negative]] |format=count}}
   neutral,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Sentiment140 annotation::neutral]] |format=count}}
   none,{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] [[Has Sentiment140 annotation::none]] |format=count}}
 }}
+</div>
+</div>
 
-
-Tweets by this user:
-
-{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] |format = table}}
+{{#ask: [[Category:Tweet]] [[Was written by::User{user_id}]] |format = table|mainlabel=Tweets by this user}}
