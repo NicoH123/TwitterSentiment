@@ -1,6 +1,6 @@
 # TwitterSentiment
 
-TwitterSentiment is an extension for Semantic MediaWiki which enables you to quickly analyze the mood about different topics on Twitter, right from your MediaWiki.
+TwitterSentiment is an extension for Semantic MediaWiki which enables you to quickly analyze the mood about different topics on Twitter, right from your MediaWiki. To do this, we use the three Sentiment Analysis APIs provided by [Datumbox](http://www.datumbox.com/machine-learning-api/), [Meaningcloud](http://www.meaningcloud.com/products/sentiment-analysis), and [Sentiment140](http://help.sentiment140.com/api).
 
 ## Installation
 
@@ -30,5 +30,10 @@ TwitterSentiment is an extension for Semantic MediaWiki which enables you to qui
 
 Open your MediaWiki and go to the special page `Special:TwitterFeed`. There you find a feed of tweets related to the search terms defined by you. If you click on a username or user profile pic, you'll get to that user's wiki page. To get to a tweet's wiki page, click on the time specification below the tweet. By clicking on a hashtag in a tweet, you'll get to that hashtag's wiki page.
 
-On the respective pages, you'll find details and visualizations about the respective entity's sentiments. Links to related entities are also provided. By clicking on the small magnifying glasses in the factboxes, you can trigger inline queries which show entities with similar values (TODO das schöner + credits).
+Once you are on a tweet wiki page, you can see how different Sentiment Analysis web services annotated the tweet. If you click on the small magnifying glasses next to an annotation, an inline query is triggered and you see other tweets with the same annotation by the respective web service. You can also get to the page of the tweet author and, if any, to the pages of all hashtags used in this tweet.
 
+On a user wiki page, you see pie charts of the sentiments expressed in all tweets written by this user, one chart per web service. Apart from that, you see a list of all tweets written by this user.
+
+A hashtag wiki page is quite similar to a user page: You see pie charts about the sentiments in all the tweets that use this respective hashtag and a list with links to all tweets using this hashtag is provided.
+
+Should you have further questions or detect an issue, don't hesitate to drop us a comment here on GitHub!
